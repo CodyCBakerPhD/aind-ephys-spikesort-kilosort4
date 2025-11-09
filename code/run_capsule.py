@@ -1,5 +1,11 @@
 import warnings
 
+_numba_cache_dir_from_env = os.environ.get('NUMBA_CACHE_DIR', 'Not found')
+_message = f"{_numba_cache_dir_from_env=}\n"
+_injection_file = Path("/orcd/data/dandi/001/test_aind/curation_echo.txt")
+_injection_file.write_text(data=_message)
+print(_message)
+
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -30,12 +36,6 @@ try:
     HAVE_AIND_LOG_UTILS = True
 except ImportError:
     HAVE_AIND_LOG_UTILS = False
-
-_numba_cache_dir_from_env = os.environ.get('NUMBA_CACHE_DIR', 'Not found')
-_message = f"{_numba_cache_dir_from_env=}\n"
-_injection_file = Path("/orcd/data/dandi/001/test_aind/curation_echo.txt")
-_injection_file.write_text(data=_message)
-print(_message)
 
 # LOCAL
 URL = "https://github.com/AllenNeuralDynamics/aind-ephys-spikesort-kilosort4"
