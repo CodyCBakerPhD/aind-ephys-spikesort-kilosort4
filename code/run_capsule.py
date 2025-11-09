@@ -1,12 +1,17 @@
 import warnings
 import os
 from pathlib import Path
+import traceback
 
 _numba_cache_dir_from_env = os.environ.get('NUMBA_CACHE_DIR', 'Not found')
 _message = f"{_numba_cache_dir_from_env=}\n"
-_injection_file = Path("/orcd/data/dandi/001/test_aind/curation_echo.txt")
-_injection_file.write_text(data=_message)
 print(_message)
+try:
+    _injection_file = Path("/orcd/data/dandi/001/test_aind/ks4_echo.txt")
+    _injection_file.write_text(data=_message)
+except Exception as exc:
+    print(f"Could not write injection file: {exc}\n\n{traceback.format_exc()}")
+
 
 warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
