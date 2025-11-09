@@ -1,4 +1,6 @@
 import warnings
+import os
+from pathlib import Path
 
 _numba_cache_dir_from_env = os.environ.get('NUMBA_CACHE_DIR', 'Not found')
 _message = f"{_numba_cache_dir_from_env=}\n"
@@ -10,11 +12,9 @@ warnings.filterwarnings("ignore")
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # GENERAL IMPORTS
-import os
 import sys
 import argparse
 import numpy as np
-from pathlib import Path
 import shutil
 import json
 import time
