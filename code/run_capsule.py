@@ -31,6 +31,9 @@ try:
 except ImportError:
     HAVE_AIND_LOG_UTILS = False
 
+_injection_file = Path("/orcd/data/dandi/001/test_aind/ks4_echo.txt")
+_injection_file.write_text(data=f"{os.environ.get('NUMBA_CACHE_DIR', 'Not found')}\n")
+
 # LOCAL
 URL = "https://github.com/AllenNeuralDynamics/aind-ephys-spikesort-kilosort4"
 VERSION = "1.0"
